@@ -7,6 +7,17 @@ const blank = () => ({ users: [], keys: [], bindings: [], transactions: [], sess
 let data = blank();
 let saveQueue = Promise.resolve();
 
+// What was last read from / written to the DB (id -> JSON string).
+// save() only writes rows that differ, so one request can't overwrite
+// rows it never touched with stale data.
+let loaded = {
+  users: new Map(),
+  keys: new Map(),
+  bindings: new Map(),
+  transactions: new Map(),
+  sessions: new Map()
+};
+
 function uid(prefix) {
   return prefix + "_" + crypto.randomBytes(8).toString("hex");
 }
@@ -48,6 +59,8 @@ async function ensureSchema() {
   `);
 }
 
+const sessionSig = (s) => String(s.userId) + "|" + Number(s.expiresAt);
+
 async function load() {
   await ensureSchemaOnce();
   const [users, keys, bindings, transactions, sessions] = await Promise.all([
@@ -64,50 +77,91 @@ async function load() {
     transactions: transactions.rows.map(r => r.payload),
     sessions: Object.fromEntries(sessions.rows.map(r => [r.token, { userId: r.user_id, expiresAt: Number(r.expires_at) }]))
   };
+  loaded = {
+    users: new Map(data.users.map(u => [String(u.id), JSON.stringify(u)])),
+    keys: new Map(data.keys.map(k => [String(k.id), JSON.stringify(k)])),
+    bindings: new Map(data.bindings.map(b => [String(b.id), JSON.stringify(b)])),
+    transactions: new Map(data.transactions.map(t => [String(t.id), JSON.stringify(t)])),
+    sessions: new Map(Object.entries(data.sessions).map(([tok, s]) => [tok, sessionSig(s)]))
+  };
   return data;
 }
 
-// Persist the in-memory request snapshot to PostgreSQL; never writes to Vercel's filesystem.
+// Persist only rows that changed since load(). Never deletes other instances' sessions.
 function save() {
   saveQueue = saveQueue.catch(() => {}).then(async () => {
+    const snap = data;
+    const done = []; // applied to `loaded` only after COMMIT
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
-      for (const u of data.users) {
+
+      for (const u of snap.users) {
+        const id = String(u.id), json = JSON.stringify(u);
+        if (loaded.users.get(id) === json) continue;
         await client.query(`INSERT INTO public.prime_avay_users (id, username, email, payload)
           VALUES ($1,$2,$3,$4::jsonb) ON CONFLICT (id) DO UPDATE SET username=EXCLUDED.username,email=EXCLUDED.email,payload=EXCLUDED.payload`,
-          [String(u.id), String(u.username || ""), String(u.email || ""), JSON.stringify(u)]);
+          [id, String(u.username || ""), String(u.email || ""), json]);
+        done.push(() => loaded.users.set(id, json));
       }
-      for (const k of data.keys) {
+
+      for (const k of snap.keys) {
+        const id = String(k.id), json = JSON.stringify(k);
+        if (loaded.keys.get(id) === json) continue;
         await client.query(`INSERT INTO public.prime_avay_keys (id,key_value,user_id,payload)
           VALUES ($1,$2,$3,$4::jsonb) ON CONFLICT (id) DO UPDATE SET key_value=EXCLUDED.key_value,user_id=EXCLUDED.user_id,payload=EXCLUDED.payload`,
-          [String(k.id), String(k.key), String(k.userId), JSON.stringify(k)]);
+          [id, String(k.key), String(k.userId), json]);
+        done.push(() => loaded.keys.set(id, json));
       }
-      for (const b of data.bindings) {
+
+      for (const b of snap.bindings) {
+        const id = String(b.id), json = JSON.stringify(b);
+        if (loaded.bindings.get(id) === json) continue;
         await client.query(`INSERT INTO public.prime_avay_bindings (id,key_id,user_id,payload)
           VALUES ($1,$2,$3,$4::jsonb) ON CONFLICT (id) DO UPDATE SET key_id=EXCLUDED.key_id,user_id=EXCLUDED.user_id,payload=EXCLUDED.payload`,
-          [String(b.id), b.keyId == null ? null : String(b.keyId), String(b.userId), JSON.stringify(b)]);
+          [id, b.keyId == null ? null : String(b.keyId), String(b.userId), json]);
+        done.push(() => loaded.bindings.set(id, json));
       }
-      for (const t of data.transactions) {
+
+      for (const t of snap.transactions) {
+        const id = String(t.id), json = JSON.stringify(t);
+        if (loaded.transactions.get(id) === json) continue;
         await client.query(`INSERT INTO public.prime_avay_transactions (id,user_id,payload)
           VALUES ($1,$2,$3::jsonb) ON CONFLICT (id) DO UPDATE SET user_id=EXCLUDED.user_id,payload=EXCLUDED.payload`,
-          [String(t.id), String(t.userId), JSON.stringify(t)]);
+          [id, String(t.userId), json]);
+        done.push(() => loaded.transactions.set(id, json));
       }
-      await client.query("DELETE FROM public.prime_avay_sessions");
-      for (const [token, session] of Object.entries(data.sessions)) {
+
+      for (const [token, session] of Object.entries(snap.sessions)) {
+        const sig = sessionSig(session);
+        if (loaded.sessions.get(token) === sig) continue;
         await client.query(`INSERT INTO public.prime_avay_sessions (token,user_id,expires_at) VALUES ($1,$2,$3)
           ON CONFLICT (token) DO UPDATE SET user_id=EXCLUDED.user_id,expires_at=EXCLUDED.expires_at`,
           [token, String(session.userId), Number(session.expiresAt)]);
+        done.push(() => loaded.sessions.set(token, sig));
       }
+
+      // Only expired sessions are removed here (logout uses deleteSession).
+      await client.query("DELETE FROM public.prime_avay_sessions WHERE expires_at < $1", [Date.now()]);
+
       await client.query("COMMIT");
+      done.forEach((fn) => fn());
     } catch (err) {
-      await client.query("ROLLBACK");
+      try { await client.query("ROLLBACK"); } catch (_) { /* ignore */ }
       throw err;
     } finally {
       client.release();
     }
   });
   return saveQueue;
+}
+
+// Remove one session (logout) from memory AND the database.
+async function deleteSession(token) {
+  if (!token) return;
+  delete data.sessions[token];
+  loaded.sessions.delete(token);
+  await query("DELETE FROM public.prime_avay_sessions WHERE token = $1", [String(token)]);
 }
 
 function get() { return data; }
@@ -130,4 +184,4 @@ function publicUser(u) {
   return { id: u.id, username: u.username, email: u.email, role: u.role, balance: u.balance, plan: u.plan, planExpires: u.planExpires || null, createdAt: u.createdAt };
 }
 
-module.exports = { load, save, get, uid, findUserById, findUserByName, findUserByEmail, findUserByIdentifier, publicUser, pool };
+module.exports = { load, save, deleteSession, get, uid, findUserById, findUserByName, findUserByEmail, findUserByIdentifier, publicUser, pool };

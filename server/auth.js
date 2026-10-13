@@ -6,6 +6,10 @@ const store = require("./store");
 const SESSION_HOURS = 12;
 const REMEMBER_DAYS = 30;
 
+// Secure cookies on Vercel / production (HTTPS). Plain http://localhost still works.
+const IS_SECURE = Boolean(process.env.VERCEL) || process.env.NODE_ENV === "production";
+const COOKIE_FLAGS = "HttpOnly; SameSite=Lax; Path=/" + (IS_SECURE ? "; Secure" : "");
+
 function hashPassword(password) {
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto.scryptSync(String(password), salt, 64).toString("hex");
@@ -22,6 +26,7 @@ function verifyPassword(password, salt, expectedHash) {
   }
 }
 
+// Adds the session to the in-memory store; the route calls store.save() to persist it.
 function createSession(userId, remember) {
   const token = crypto.randomBytes(32).toString("hex");
   const ttlMs = remember ? REMEMBER_DAYS * 24 * 60 * 60 * 1000 : SESSION_HOURS * 60 * 60 * 1000;
@@ -30,12 +35,10 @@ function createSession(userId, remember) {
   return { token, expiresAt, maxAgeMs: ttlMs };
 }
 
-function destroySession(token) {
-  if (token && store.get().sessions[token]) {
-    delete store.get().sessions[token];
-    return store.save();
-  }
-  return Promise.resolve();
+// Logout: remove from memory AND the database.
+async function destroySession(token) {
+  if (!token) return;
+  await store.deleteSession(token);
 }
 
 function parseCookies(header) {
@@ -46,7 +49,12 @@ function parseCookies(header) {
     if (idx === -1) continue;
     const key = part.slice(0, idx).trim();
     const value = part.slice(idx + 1).trim();
-    if (key) out[key] = decodeURIComponent(value);
+    if (!key) continue;
+    try {
+      out[key] = decodeURIComponent(value);
+    } catch {
+      out[key] = value; // malformed encoding must not crash the request
+    }
   }
   return out;
 }
@@ -57,8 +65,9 @@ function sessionFromRequest(req) {
   const session = store.get().sessions[token];
   if (!session) return { token: null, user: null };
   if (session.expiresAt < Date.now()) {
+    // Expired sessions are never loaded from the DB and are cleaned up by save(),
+    // so memory-only removal is enough (no extra DB write per request).
     delete store.get().sessions[token];
-    store.save().catch((err) => console.error("[auth] Could not remove expired session:", err.message));
     return { token: null, user: null };
   }
   const user = store.findUserById(session.userId);
@@ -68,11 +77,11 @@ function sessionFromRequest(req) {
 
 function cookieString(token, maxAgeMs) {
   const maxAgeSec = Math.floor(maxAgeMs / 1000);
-  return `pa_session=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${maxAgeSec}`;
+  return `pa_session=${token}; ${COOKIE_FLAGS}; Max-Age=${maxAgeSec}`;
 }
 
 function clearCookieString() {
-  return "pa_session=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0";
+  return `pa_session=; ${COOKIE_FLAGS}; Max-Age=0`;
 }
 
 function attach(req, res, next) {
@@ -88,8 +97,6 @@ function requireAuth(req, res, next) {
   }
   next();
 }
-
-
 
 function requireAdmin(req, res, next) {
   if (!req.user) {
@@ -115,19 +122,13 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-
-
+// In-memory cleanup only; expired rows are removed from the DB by store.save().
 function pruneSessions() {
   const now = Date.now();
   const sessions = store.get().sessions;
-  let changed = false;
   for (const token of Object.keys(sessions)) {
-    if (sessions[token].expiresAt < now) {
-      delete sessions[token];
-      changed = true;
-    }
+    if (sessions[token].expiresAt < now) delete sessions[token];
   }
-  if (changed) store.save().catch((err) => console.error("[auth] Could not prune sessions:", err.message));
 }
 
 module.exports = {
