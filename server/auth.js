@@ -27,15 +27,15 @@ function createSession(userId, remember) {
   const ttlMs = remember ? REMEMBER_DAYS * 24 * 60 * 60 * 1000 : SESSION_HOURS * 60 * 60 * 1000;
   const expiresAt = Date.now() + ttlMs;
   store.get().sessions[token] = { userId, expiresAt };
-  store.save();
   return { token, expiresAt, maxAgeMs: ttlMs };
 }
 
 function destroySession(token) {
   if (token && store.get().sessions[token]) {
     delete store.get().sessions[token];
-    store.save();
+    return store.save();
   }
+  return Promise.resolve();
 }
 
 function parseCookies(header) {
@@ -58,7 +58,7 @@ function sessionFromRequest(req) {
   if (!session) return { token: null, user: null };
   if (session.expiresAt < Date.now()) {
     delete store.get().sessions[token];
-    store.save();
+    store.save().catch((err) => console.error("[auth] Could not remove expired session:", err.message));
     return { token: null, user: null };
   }
   const user = store.findUserById(session.userId);
@@ -127,7 +127,7 @@ function pruneSessions() {
       changed = true;
     }
   }
-  if (changed) store.save();
+  if (changed) store.save().catch((err) => console.error("[auth] Could not prune sessions:", err.message));
 }
 
 module.exports = {

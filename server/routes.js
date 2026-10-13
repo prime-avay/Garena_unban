@@ -165,7 +165,7 @@ function txView(t) {
 
 /* ---------------- auth ---------------- */
 
-router.post("/api/auth/login", rateLimit({ windowMs: 5 * 60 * 1000, max: 15, keyPrefix: "login" }), (req, res) => {
+router.post("/api/auth/login", rateLimit({ windowMs: 5 * 60 * 1000, max: 15, keyPrefix: "login" }), async (req, res) => {
   const identifier = String(req.body?.identifier || "").trim();
   const password = String(req.body?.password || "");
   const remember = Boolean(req.body?.remember);
@@ -176,18 +176,18 @@ router.post("/api/auth/login", rateLimit({ windowMs: 5 * 60 * 1000, max: 15, key
   }
 
   const session = auth.createSession(user.id, remember);
-  store.save();
+  await store.save();
   res.setHeader("Set-Cookie", auth.cookieString(session.token, session.maxAgeMs));
   res.json({ user: store.publicUser(user), stats: userStats(user) });
 });
 
-router.post("/api/auth/logout", (req, res) => {
-  auth.destroySession(req.sessionToken);
+router.post("/api/auth/logout", async (req, res) => {
+  await auth.destroySession(req.sessionToken);
   res.setHeader("Set-Cookie", auth.clearCookieString());
   res.json({ ok: true });
 });
 
-router.post("/api/auth/change-password", rateLimit({ windowMs: 5 * 60 * 1000, max: 10, keyPrefix: "pw" }), auth.requireAuth, (req, res) => {
+router.post("/api/auth/change-password", rateLimit({ windowMs: 5 * 60 * 1000, max: 10, keyPrefix: "pw" }), auth.requireAuth, async (req, res) => {
   const current = String(req.body?.currentPassword || "");
   const nextPw = String(req.body?.newPassword || "");
   if (!auth.verifyPassword(current, req.user.salt, req.user.hash)) {
@@ -199,31 +199,31 @@ router.post("/api/auth/change-password", rateLimit({ windowMs: 5 * 60 * 1000, ma
   const { salt, hash } = auth.hashPassword(nextPw);
   req.user.salt = salt;
   req.user.hash = hash;
-  store.save();
+  await store.save();
   res.json({ ok: true, message: "Password updated." });
 });
 
-router.get("/api/auth/me", auth.requireAuth, (req, res) => {
+router.get("/api/auth/me", auth.requireAuth, async (req, res) => {
   res.json({ user: store.publicUser(req.user), stats: userStats(req.user) });
 });
 
 /* ---------------- profile ---------------- */
 
-router.get("/api/me/profile", auth.requireAuth, (req, res) => {
+router.get("/api/me/profile", auth.requireAuth, async (req, res) => {
   const stats = userStats(req.user);
   res.json({ user: store.publicUser(req.user), stats });
 });
 
 /* ---------------- plans ---------------- */
 
-router.get("/api/plans", (req, res) => {
+router.get("/api/plans", async (req, res) => {
   res.json({
     plans: Object.values(PLANS).map((p) => ({ ...p, durationDays: PLAN_DURATION_DAYS })),
     keyPrice: KEY_PRICE
   });
 });
 
-router.post("/api/plans/purchase", rateLimit({ windowMs: 60 * 1000, max: 10, keyPrefix: "plan" }), auth.requireAuth, (req, res) => {
+router.post("/api/plans/purchase", rateLimit({ windowMs: 60 * 1000, max: 10, keyPrefix: "plan" }), auth.requireAuth, async (req, res) => {
   const planName = String(req.body?.plan || "");
   const plan = PLANS[planName];
   if (!plan) return badRequest(res, "Unknown plan.");
@@ -249,24 +249,24 @@ router.post("/api/plans/purchase", rateLimit({ windowMs: 60 * 1000, max: 10, key
     ref: planName.toUpperCase() + "_PLAN",
     demo: true
   });
-  store.save();
+  await store.save();
   res.json({ user: store.publicUser(req.user), stats: userStats(req.user), message: `${planName} plan activated.` });
 });
 
 /* ---------------- keys ---------------- */
 
-router.get("/api/keys", auth.requireAuth, (req, res) => {
+router.get("/api/keys", auth.requireAuth, async (req, res) => {
   const keys = store.get().keys.filter((k) => k.userId === req.user.id);
   res.json({ keys: keys.map(keyView), keyPrice: KEY_PRICE });
 });
 
-router.get("/api/keys/:id/copy", rateLimit({ windowMs: 60 * 1000, max: 60, keyPrefix: "keycopy" }), auth.requireAuth, (req, res) => {
+router.get("/api/keys/:id/copy", rateLimit({ windowMs: 60 * 1000, max: 60, keyPrefix: "keycopy" }), auth.requireAuth, async (req, res) => {
   const record = store.get().keys.find((k) => k.id === req.params.id && k.userId === req.user.id);
   if (!record) return res.status(404).json({ error: "NOT_FOUND", message: "Key not found." });
   res.json({ key: record.key });
 });
 
-router.post("/api/keys/generate", rateLimit({ windowMs: 60 * 1000, max: 30, keyPrefix: "gen" }), auth.requireAuth, (req, res) => {
+router.post("/api/keys/generate", rateLimit({ windowMs: 60 * 1000, max: 30, keyPrefix: "gen" }), auth.requireAuth, async (req, res) => {
   if (!userPlanActive(req.user) || !req.user.plan) {
     return res.status(403).json({ error: "NO_PLAN", message: "No active plan. Please buy a plan to generate keys." });
   }
@@ -311,7 +311,7 @@ router.post("/api/keys/generate", rateLimit({ windowMs: 60 * 1000, max: 30, keyP
     };
     store.get().keys.unshift(record);
     addTransaction(req.user.id, { amount: -KEY_PRICE, type: "Key generation", ref: key, demo: false });
-    store.save();
+    await store.save();
 
     res.status(201).json({
       key,
@@ -326,12 +326,12 @@ router.post("/api/keys/generate", rateLimit({ windowMs: 60 * 1000, max: 30, keyP
 
 /* ---------------- bindings ---------------- */
 
-router.get("/api/bindings", auth.requireAuth, (req, res) => {
+router.get("/api/bindings", auth.requireAuth, async (req, res) => {
   const bindings = store.get().bindings.filter((b) => b.userId === req.user.id);
   res.json({ bindings: bindings.map(bindingView) });
 });
 
-router.post("/api/bind", rateLimit({ windowMs: 60 * 1000, max: 20, keyPrefix: "bind" }), auth.requireAuth, (req, res) => {
+router.post("/api/bind", rateLimit({ windowMs: 60 * 1000, max: 20, keyPrefix: "bind" }), auth.requireAuth, async (req, res) => {
   const keyValue = String(req.body?.key || "").trim().toUpperCase();
   const uid = String(req.body?.uid || "").trim();
 
@@ -365,13 +365,13 @@ router.post("/api/bind", rateLimit({ windowMs: 60 * 1000, max: 20, keyPrefix: "b
     expiresAt: new Date(now + BIND_DURATION_MS).toISOString()
   };
   store.get().bindings.unshift(binding);
-  store.save();
+  await store.save();
   res.status(201).json({ binding: bindingView(binding), message: "Key bound. Your 7-day countdown has started." });
 });
 
 /* ---------------- deposits & transactions ---------------- */
 
-router.post("/api/deposit", rateLimit({ windowMs: 60 * 1000, max: 15, keyPrefix: "dep" }), auth.requireAuth, (req, res) => {
+router.post("/api/deposit", rateLimit({ windowMs: 60 * 1000, max: 15, keyPrefix: "dep" }), auth.requireAuth, async (req, res) => {
   const amount = Number(req.body?.amount);
   if (!Number.isFinite(amount) || amount < 10 || amount > 50000) {
     return badRequest(res, "Enter an amount between ₹10 and ₹50,000.");
@@ -383,11 +383,11 @@ router.post("/api/deposit", rateLimit({ windowMs: 60 * 1000, max: 15, keyPrefix:
     ref: "PAY-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
     demo: true
   });
-  store.save();
+  await store.save();
   res.status(201).json({ balance: req.user.balance, message: `₹${amount.toFixed(2)} added to your balance.` });
 });
 
-router.get("/api/transactions", auth.requireAuth, (req, res) => {
+router.get("/api/transactions", auth.requireAuth, async (req, res) => {
   const limit = Math.min(100, Math.max(1, Number(req.query?.limit) || 50));
   const txs = store.get().transactions.filter((t) => t.userId === req.user.id).slice(0, limit);
   res.json({ transactions: txs.map(txView) });
@@ -395,7 +395,7 @@ router.get("/api/transactions", auth.requireAuth, (req, res) => {
 
 /* ---------------- admin ---------------- */
 
-router.get("/api/admin/overview", auth.requireAdmin, (req, res) => {
+router.get("/api/admin/overview", auth.requireAdmin, async (req, res) => {
   const now = new Date();
   const today = now.toDateString();
   const txs = store.get().transactions;
@@ -429,7 +429,7 @@ router.get("/api/admin/overview", auth.requireAdmin, (req, res) => {
   });
 });
 
-router.get("/api/admin/users", auth.requireAdmin, (req, res) => {
+router.get("/api/admin/users", auth.requireAdmin, async (req, res) => {
   res.json({
     users: store
       .get()
@@ -447,7 +447,7 @@ router.get("/api/admin/users", auth.requireAdmin, (req, res) => {
   });
 });
 
-router.get("/api/admin/keys", auth.requireAdmin, (req, res) => {
+router.get("/api/admin/keys", auth.requireAdmin, async (req, res) => {
   res.json({
     keys: store.get().keys.slice(0, 200).map((k) => ({
       id: k.id,
@@ -461,7 +461,7 @@ router.get("/api/admin/keys", auth.requireAdmin, (req, res) => {
   });
 });
 
-router.get("/api/admin/deposits", auth.requireAdmin, (req, res) => {
+router.get("/api/admin/deposits", auth.requireAdmin, async (req, res) => {
   res.json({
     deposits: store
       .get()
@@ -478,7 +478,7 @@ router.get("/api/admin/deposits", auth.requireAdmin, (req, res) => {
   });
 });
 
-router.get("/api/admin/transactions", auth.requireAdmin, (req, res) => {
+router.get("/api/admin/transactions", auth.requireAdmin, async (req, res) => {
   res.json({ transactions: store.get().transactions.slice(0, 200).map((t) => ({
     id: t.id,
     userId: t.userId,
@@ -491,7 +491,7 @@ router.get("/api/admin/transactions", auth.requireAdmin, (req, res) => {
   })) });
 });
 
-router.get("/api/admin/plans", auth.requireAdmin, (req, res) => {
+router.get("/api/admin/plans", auth.requireAdmin, async (req, res) => {
   const counts = { Premium: 0, Ultimate: 0, None: 0 };
   for (const u of store.get().users) {
     if (userPlanActive(u) && u.plan && counts[u.plan] !== undefined) counts[u.plan] += 1;

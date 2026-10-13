@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test:syntax": "node --check server.js && node --check server/store.js && node --check server/auth.js && node --check server/routes.js && node --check api/index.js"
   },
   "dependencies": {
     "dotenv": "^18.0.7",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.23.1"
   }
 }

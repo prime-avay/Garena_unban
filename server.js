@@ -1,13 +1,12 @@
-
 "use strict";
+
+require("dotenv").config();
 
 const path = require("path");
 const express = require("express");
 const store = require("./server/store");
 const auth = require("./server/auth");
 const { router: apiRouter } = require("./server/routes");
-
-require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,7 +27,7 @@ if (!CLIENT_USERNAME || !CLIENT_PASSWORD) {
 }
 
 // Create or update a configured account.
-function configureAccount({ username, password, role, email, plan, balance }) {
+async function configureAccount({ username, password, role, email, plan, balance }) {
   let user = store.findUserByName(username);
 
   const { salt, hash } = auth.hashPassword(password);
@@ -47,7 +46,7 @@ function configureAccount({ username, password, role, email, plan, balance }) {
           : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
     }
 
-    store.save();
+    await store.save();
     console.log(`[config] ${role} account configured: ${username}`);
     return;
   }
@@ -69,13 +68,13 @@ function configureAccount({ username, password, role, email, plan, balance }) {
   };
 
   store.get().users.push(user);
-  store.save();
+  await store.save();
 
   console.log(`[config] ${role} account created: ${username}`);
 }
 
-function seed() {
-  configureAccount({
+async function seed() {
+  await configureAccount({
     username: ADMIN_USERNAME,
     password: ADMIN_PASSWORD,
     role: "admin",
@@ -84,7 +83,7 @@ function seed() {
     balance: 500
   });
 
-  configureAccount({
+  await configureAccount({
     username: CLIENT_USERNAME,
     password: CLIENT_PASSWORD,
     role: "client",
@@ -94,15 +93,31 @@ function seed() {
   });
 }
 
-store.load();
-seed();
-
 app.disable("x-powered-by");
+
+let initializationError = null;
+const ready = (async () => {
+  await store.load();
+  await seed();
+  await store.save();
+})().catch((error) => {
+  initializationError = error;
+  console.error("[startup] Failed to initialize PRIME AVAY:", error);
+  throw error;
+});
+
+// Wait for database initialization before serving any request.
+app.use(async (req, res, next) => {
+  try {
+    await ready;
+    next();
+  } catch (error) {
+    res.status(503).json({ error: "SERVICE_UNAVAILABLE", message: "Database initialization failed." });
+  }
+});
 
 app.use(express.json({ limit: "100kb" }));
 app.use(auth.attach);
-
-setInterval(() => auth.pruneSessions(), 10 * 60 * 1000).unref();
 
 // Static files
 app.use(
@@ -143,6 +158,14 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`PRIME AVAY running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  ready.then(() => {
+    const port = process.env.PORT || 3000;
+    setInterval(() => auth.pruneSessions(), 10 * 60 * 1000).unref();
+    app.listen(port, () => console.log(`PRIME AVAY running at http://localhost:${port}`));
+  }).catch(() => {
+    process.exitCode = 1;
+  });
+}
+
+module.exports = app;
