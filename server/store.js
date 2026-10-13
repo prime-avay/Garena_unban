@@ -11,6 +11,18 @@ function uid(prefix) {
   return prefix + "_" + crypto.randomBytes(8).toString("hex");
 }
 
+let schemaPromise = null;
+
+function ensureSchemaOnce() {
+  if (!schemaPromise) {
+    schemaPromise = ensureSchema().catch((err) => {
+      schemaPromise = null;
+      throw err;
+    });
+  }
+  return schemaPromise;
+}
+
 async function ensureSchema() {
   await query(`
     CREATE TABLE IF NOT EXISTS public.prime_avay_users (
@@ -37,7 +49,7 @@ async function ensureSchema() {
 }
 
 async function load() {
-  await ensureSchema();
+  await ensureSchemaOnce();
   const [users, keys, bindings, transactions, sessions] = await Promise.all([
     query("SELECT payload FROM public.prime_avay_users ORDER BY id"),
     query("SELECT payload FROM public.prime_avay_keys ORDER BY id"),

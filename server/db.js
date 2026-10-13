@@ -10,13 +10,14 @@ if (!process.env.DATABASE_URL) {
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
-  max: 5,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 10000
+  max: 3,
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 20000,
+  allowExitOnIdle: true
 });
 
 pool.on("error", (err) => {
-  console.error("[database] Unexpected PostgreSQL pool error:", err.message);
+  console.error("[database] Pool error:", err.message);
 });
 
 async function query(text, params = []) {
