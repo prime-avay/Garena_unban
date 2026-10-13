@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="PRIME AVAY — independent Free Fire ID unban key portal. Generate keys, bind UIDs, manage your balance.">
+  <title>PRIME AVAY | Free Fire ID Unban</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+  <!-- ============ PUBLIC HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#/" aria-label="PRIME AVAY home">
+      <img src="assets/logo.png" alt="" class="brand-logo">
+      <span class="brand-name">PRIME <b>AVAY</b></span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="#/" data-navlink="home">Home</a>
+      <a href="#how" data-navlink="how" class="landing-only">How It Works</a>
+      <a href="#features" data-navlink="features" class="landing-only">Features</a>
+      <a href="#faq" data-navlink="faq" class="landing-only">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-sm" id="headerAuth" type="button">Login</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" type="button"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ LANDING ============ -->
+    <section class="view" id="view-landing">
+      <div class="hero">
+        <canvas id="particleCanvas" aria-hidden="true"></canvas>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="service-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8"/></svg> Independent Unban Service</span>
+            <h1 class="hero-title"><span class="line-white">GARENA FREE FIRE</span><span class="line-red">ID UNBAN</span></h1>
+            <p class="hero-sub">Get your Free Fire ID unbanned quickly and safely.<br>We help you recover your account and get back to the game.</p>
+            <div class="hero-chips">
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> Fast Process</span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8"/></svg> Secure &amp; Safe</span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M20 17v1a3 3 0 0 1-3 3h-3" stroke="currentColor" stroke-width="1.8"/></svg> 24/7 Support</span>
+            </div>
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="#/login"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Login</a>
+            </div>
+            <p class="hero-disclaimer">PRIME AVAY is an independent service and is not affiliated with, endorsed, or sponsored by Garena. </p>
+          </div>
+          <div class="hero-art">
+            <img src="assets/hero-character.png" alt="Original gaming warrior character surrounded by red lightning" class="hero-character">
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <article class="trust-card">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h3>Fast Process</h3><p>Get unbanned quickly.</p>
+        </article>
+        <article class="trust-card">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Secure &amp; Safe</h3><p>Your data is always protected.</p>
+        </article>
+        <article class="trust-card">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M20 17v1a3 3 0 0 1-3 3h-3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>24/7 Support</h3><p>We're here anytime.</p>
+        </article>
+        <article class="trust-card">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8L12 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <h3>Trusted by Millions</h3><p>Join thousands of players.</p>
+        </article>
+      </div>
+
+      <section class="section" id="how">
+        <div class="section-head">
+          <span class="eyebrow">Simple Steps</span>
+          <h2>How It <span class="red">Works</span></h2>
+          <p>From signup to a bound key in three steps.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-num">01</span><h3>Buy a Plan</h3><p>Message us on Telegram (@prime_avay) to activate your account and get your username + access key.</p></article>
+          <article class="step-card"><span class="step-num">02</span><h3>Login &amp; Generate Key</h3><p>Login with your credentials, then generate a unique PRIME key instantly.</p></article>
+          <article class="step-card"><span class="step-num">03</span><h3>Bind Key to UID</h3><p>Bind your key to your Free Fire UID. The binding stays active for 7 days.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-head">
+          <span class="eyebrow">Why PRIME AVAY</span>
+          <h2>Portal <span class="red">Features</span></h2>
+          <p>Everything in the portal is verified on the server — not in your browser.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.8"/><path d="m11 12 9-9m-3.5 3.5 2 2M15 7l2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3>Instant Key Generation</h3><p>Unique PRIME-XXXXX keys generated and billed on the server in one click.</p></article>
+          <article class="feature-card"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12h6m-6 0a3 3 0 1 0-3-3m3 3a3 3 0 1 1-3 3m12-3h-6m6 0a3 3 0 1 0 3-3m-3 3a3 3 0 1 1 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><h3>Secure UID Binding</h3><p>Attach keys to your Free Fire UID with an automatic 7-day validity window.</p></article>
+          <article class="feature-card"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>Server-Side Protection</h3><p>Passwords are hashed, sessions are httpOnly, and every limit is enforced on the server.</p></article>
+          <article class="feature-card"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 9v4l2.5 2.5M9 2h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3>Live Expiry Countdown</h3><p>Every binding shows a per-second countdown until it expires automatically.</p></article>
+          <article class="feature-card"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M7 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3>Transparent Ledger</h3><p>Every key, binding, and balance change is recorded in your activity feed.</p></article>
+          <article class="feature-card"><div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M20 17v1a3 3 0 0 1-3 3h-3" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>24/7 Human Support</h3><p>Stuck at any step? Our support team answers around the clock.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="section-head">
+          <span class="eyebrow">Answers</span>
+          <h2>Frequently Asked <span class="red">Questions</span></h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>Is PRIME AVAY affiliated with Garena?<span class="faq-chev"></span></summary><div class="faq-body"><p>No. PRIME AVAY is a fully independent service. We are not affiliated with, endorsed by, or sponsored by Garena or Free Fire, and we do not guarantee any unban outcome.</p></div></details>
+          <details class="faq-item"><summary>How does the key system work?<span class="faq-chev"></span></summary><div class="faq-body"><p>After you choose a plan, you can generate unique keys in the format PRIME-XXXXX. Each key costs ₹300 from your portal balance. You then bind a key to your Free Fire UID; the binding stays active for exactly 7 days.</p></div></details>
+          <details class="faq-item"><summary>What are the plan limits?<span class="faq-chev"></span></summary><div class="faq-body"><p>Premium (₹999) allows up to 25 keys per day. Ultimate (₹1,999) allows up to 50 keys per day. Limits are reset daily and enforced on the server.</p></div></details>
+          <details class="faq-item"><summary>Is my password safe?<span class="faq-chev"></span></summary><div class="faq-body"><p>Passwords are never stored in plain text. We hash them with a modern salted key-derivation function, and sessions use httpOnly cookies.</p></div></details>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-head">
+          <span class="eyebrow">Support</span>
+          <h2>Contact <span class="red">Us</span></h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-cards">
+            <div class="contact-card">
+              <h3>Fastest reply</h3>
+              <p>Telegram support answers within minutes, day and night.</p>
+              <a class="btn btn-outline full" href="https://t.me/prime_avay" target="_blank" rel="noopener" style="margin-top:12px">Message @prime_avay on Telegram</a>
+            </div>
+            <div class="contact-card">
+              <h3>Before you write</h3>
+              <p>Have your username ready. For password resets, contact support and we will verify your identity manually.</p>
+            </div>
+          </div>
+          <form id="contactForm" class="contact-card" novalidate>
+            <div class="field"><label for="ctName">Name</label>
+              <div class="input-wrap"><input id="ctName" type="text" autocomplete="name" placeholder="Your name"></div>
+            </div>
+            <div class="field"><label for="ctEmail">Email</label>
+              <div class="input-wrap"><input id="ctEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+            </div>
+            <div class="field"><label for="ctMsg">Message</label>
+              <div class="input-wrap"><textarea id="ctMsg" rows="4" placeholder="How can we help?"></textarea></div>
+            </div>
+            <p class="form-error" id="contactError" role="alert"></p>
+            <button class="btn btn-primary full" type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============ LOGIN ============ -->
+    <section class="view view-auth" id="view-login">
+      <div class="auth-card card">
+        <img src="assets/logo.png" alt="" class="auth-logo">
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-sub">Login to your account to continue</p>
+        <form id="loginForm" novalidate>
+          <div class="field"><label for="loginUsername">Username</label>
+            <div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="loginUsername" type="text" autocomplete="username" placeholder="Enter your username"></div>
+          </div>
+          <div class="field"><label for="loginAccessKey">Access Key</label>
+            <div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg><input id="loginAccessKey" type="password" autocomplete="off" placeholder="Enter your access key"><button type="button" class="pw-toggle" data-pwtoggle="loginAccessKey" aria-label="Show access key"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></button></div>
+          </div>
+          <div class="form-row-between">
+            <label class="check"><input type="checkbox" id="loginRemember" checked><span class="box"></span>Remember me</label>
+            <button type="button" class="linklike" id="forgotLink">Forgot password?</button>
+          </div>
+          <p class="form-error" id="loginError" role="alert"></p>
+          <button class="btn btn-primary full btn-lg" type="submit" id="loginSubmit">Login <span aria-hidden="true">&rarr;</span></button>
+        </form>
+        <p class="auth-switch">Access is restricted — buy a plan to get your login.</p>
+        <p class="auth-foot">Secure &middot; Fast &middot; Trusted</p>
+      </div>
+    </section>
+
+    <!-- ============ PRIVACY ============ -->
+    <section class="view" id="view-privacy">
+      <div class="legal card">
+        <span class="eyebrow">Legal</span>
+        <h1>Privacy Policy</h1>
+        <p class="muted-line">Last updated: October 2026</p>
+        <h3>What we store</h3>
+        <p>Your username, email address, a salted hash of your password, plan status, balance, keys, bindings, and transaction history. Passwords are never stored in plain text.</p>
+        <h3>Cookies</h3>
+        <p>We use a single httpOnly session cookie to keep you logged in. It is not used for advertising or tracking.</p>
+        <h3>Payments</h3>
+        <p>Wallet top-ups are processed through UPI QR payments. Payment references are stored in your transaction history so you can trace every deposit.</p>
+        <h3>Your data</h3>
+        <p>You may request a copy or deletion of your account data at any time by contacting support@primeavay.gg.</p>
+        <a class="btn btn-outline" href="#/">Back to Home</a>
+      </div>
+    </section>
+
+    <!-- ============ TERMS ============ -->
+    <section class="view" id="view-terms">
+      <div class="legal card">
+        <span class="eyebrow">Legal</span>
+        <h1>Terms of Service</h1>
+        <p class="muted-line">Last updated: October 2026</p>
+        <h3>Independent service</h3>
+        <p>PRIME AVAY is an independent service. We are not affiliated with, endorsed by, or sponsored by Garena or Free Fire.</p>
+        <h3>No guaranteed outcome</h3>
+        <p>Keys and bindings provided through this portal do not guarantee the recovery or unbanning of any game account.</p>
+        <h3>Wallet balances</h3>
+        <p>Wallet balance is used to generate keys and purchase plans. Plan limits are enforced on the server and abuse may result in account suspension.</p>
+        <a class="btn btn-outline" href="#/">Back to Home</a>
+      </div>
+    </section>
+
+    <!-- ============ USER APP ============ -->
+    <section class="view app-shell" id="view-app">
+      <aside class="sidebar" id="appSidebar">
+        <a class="sidebar-brand" href="#/">
+          <img src="assets/logo.png" alt="" class="brand-logo">
+          <span class="brand-name">PRIME <b>AVAY</b></span>
+        </a>
+        <nav class="side-nav" aria-label="Portal">
+          <span class="side-label">Menu</span>
+          <a href="#/app" data-appnav="dashboard"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>Dashboard</a>
+          <a href="#/app/keys" data-appnav="keys"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.8"/><path d="m11 12 9-9m-3.5 3.5 2 2M15 7l2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Key Generator</a>
+          <a href="#/app/bind" data-appnav="bind"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12h6m-6 0a3 3 0 1 0-3-3m3 3a3 3 0 1 1-3 3m12-3h-6m6 0a3 3 0 1 0 3-3m-3 3a3 3 0 1 1 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Bind Key</a>
+          <a href="#/app/balance" data-appnav="balance"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M16 15h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Balance</a>
+          <a href="#/app/profile" data-appnav="profile"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Profile</a>
+        </nav>
+        <nav class="side-nav side-bottom" aria-label="Account">
+          <a href="#/app/settings" data-appnav="settings"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.3a7 7 0 0 0-2 1.2l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.3a7 7 0 0 0 2-1.2l2.3 1 2-3.4-2-1.5c.1-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.6"/></svg>Settings</a>
+          <button class="side-link" id="appLogout" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Logout</button>
+        </nav>
+        <div class="side-user">
+          <span class="avatar" id="sideAvatar">P</span>
+          <div class="side-user-meta"><b id="sideUsername">User</b><small id="sidePlan">Free Plan</small></div>
+        </div>
+      </aside>
+
+      <div class="app-main">
+        <div class="app-topbar">
+          <button class="nav-toggle app-nav-toggle" id="appNavToggle" aria-label="Toggle navigation" type="button"><span></span><span></span><span></span></button>
+          <h2 id="appTitle">Dashboard</h2>
+          <div class="user-chip"><span class="avatar" id="appAvatar">P</span><div><b id="appUserName">User</b><small id="appUserPlan">Free Plan</small></div></div>
+        </div>
+
+        <!-- Dashboard -->
+        <section class="app-page" id="page-dashboard">
+          <p class="page-welcome">Welcome back, <b id="welcomeName">player</b> 👋</p>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M16 15h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Available Balance</span><strong id="dBalance">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span>Spend Today</span><strong id="dSpendToday">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4m8-4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Spend Total</span><strong id="dSpendTotal">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 2 8l10 6 10-6-10-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m6 10.5-4 2.5 10 6 10-6-4-2.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div><span>Plan</span><strong id="dPlan">Free Plan</strong><small id="dPlanExpiry">Expires: N/A</small></div></article>
+          </div>
+          <div class="dash-cols">
+            <div class="dash-col">
+              <h3 class="block-title">Quick Actions</h3>
+              <div class="quick-grid">
+                <a class="quick-card" href="#/app/keys"><span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.8"/><path d="m11 12 9-9m-3.5 3.5 2 2M15 7l2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><b>Generate Key</b><small>Create new game key</small></a>
+                <a class="quick-card" href="#/app/bind"><span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12h6m-6 0a3 3 0 1 0-3-3m3 3a3 3 0 1 1-3 3m12-3h-6m6 0a3 3 0 1 0 3-3m-3 3a3 3 0 1 1 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><b>Bind Key</b><small>Bind key with your UID</small></a>
+                <a class="quick-card" href="#/app/balance"><span class="quick-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M16 15h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><b>Add Balance</b><small>Deposit money to wallet</small></a>
+              </div>
+            </div>
+            <div class="dash-col">
+              <h3 class="block-title">Recent Activity</h3>
+              <div class="activity-list" id="recentActivity"><p class="empty-state">No activity yet. Generate your first key to get started.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Key Generator -->
+        <section class="app-page" id="page-keys">
+          <div class="dash-cols">
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Generate Key</h3>
+                <p class="muted-line">Generate your unique PRIME key. Each key costs <b class="red">₹300</b>.</p>
+                <div class="limit-row"><span>Daily key usage</span><strong id="genUsage">0 / 0</strong></div>
+                <div class="progress"><span id="genProgress"></span></div>
+                <button class="btn btn-primary full btn-lg" id="generateBtn" type="button">Generate Key <span aria-hidden="true">&rarr;</span></button>
+                <div class="key-result hidden" id="keyResult">
+                  <span class="eyebrow">Your Key — click to copy</span>
+                  <div class="key-line"><code id="latestKey">PRIME-XXXXX</code><button class="btn btn-outline btn-sm" id="copyKeyBtn" type="button">Copy</button></div>
+                </div>
+                <p class="form-message" id="keyMessage" role="status"></p>
+              </div>
+            </div>
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Last Generated Keys</h3>
+                <div class="activity-list" id="keyHistoryList"><p class="empty-state">No keys generated yet.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bind Key -->
+        <section class="app-page" id="page-bind">
+          <div class="dash-cols">
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Bind Key</h3>
+                <p class="muted-line">Bind a generated key with your UID or account.</p>
+                <form id="bindForm" novalidate>
+                  <div class="field"><label for="bindKeyInput">Generated Key</label><input id="bindKeyInput" type="text" placeholder="Enter your PRIME key" autocomplete="off" spellcheck="false"></div>
+                  <div class="field"><label for="bindUidInput">UID / Account ID</label><input id="bindUidInput" type="text" inputmode="numeric" placeholder="Enter UID or Account ID" autocomplete="off"></div>
+                  <div class="bind-expiry"><span>Unban Timing</span><b>Fixed: 7 days after binding</b></div>
+                  <p class="form-error" id="bindMessage" role="alert"></p>
+                  <button class="btn btn-primary full btn-lg" type="submit">Bind Key</button>
+                </form>
+              </div>
+            </div>
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Binding History</h3>
+                <div class="activity-list" id="bindingList"><p class="empty-state">No bindings yet.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Balance -->
+        <section class="app-page" id="page-balance">
+          <div class="stats-grid stats-grid-4">
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M16 15h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Available Balance</span><strong id="bBalance">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span>Spend Today</span><strong id="bSpendToday">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4m8-4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Spend Total</span><strong id="bSpendTotal">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 2 8l10 6 10-6-10-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m6 10.5-4 2.5 10 6 10-6-4-2.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div><span>Plan</span><strong id="bPlan">Free Plan</strong></div></article>
+          </div>
+          <div class="dash-cols">
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Add Balance</h3>
+                <p class="muted-line">Top up your wallet instantly via UPI QR payment.</p>
+                <div class="field"><label for="depositAmount">Enter amount (₹)</label>
+                  <div class="quick-amounts">
+                    <button type="button" data-quick="50">₹50</button>
+                    <button type="button" data-quick="100">₹100</button>
+                    <button type="button" data-quick="200">₹200</button>
+                    <button type="button" data-quick="500">₹500</button>
+                  </div>
+                  <input id="depositAmount" type="number" min="10" max="50000" step="1" placeholder="Min ₹10, Max ₹10,000">
+                </div>
+                <p class="form-error" id="depositError" role="alert"></p>
+                <button class="btn btn-primary full" id="depositBtn" type="button">Deposit</button>
+              </div>
+            </div>
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Deposit History</h3>
+                <div class="activity-list" id="depositHistory"><p class="empty-state">No deposits yet.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Profile -->
+        <section class="app-page" id="page-profile">
+          <div class="profile-grid">
+            <div class="card profile-card">
+              <span class="avatar avatar-lg" id="pfAvatar">P</span>
+              <h3 id="pfUsername">User</h3>
+              <p class="muted-line" id="pfEmail">user@example.com</p>
+              <span class="plan-pill" id="pfPlan">Free Plan</span>
+            </div>
+            <div class="card">
+              <h3 class="block-title">User Details</h3>
+              <dl class="detail-list">
+                <div><dt>Username</dt><dd id="pfUsername2">—</dd></div>
+                <div><dt>Email</dt><dd id="pfEmail2">—</dd></div>
+                <div><dt>Joined At</dt><dd id="pfJoined">—</dd></div>
+              </dl>
+            </div>
+            <div class="card">
+              <h3 class="block-title">Plan Information</h3>
+              <dl class="detail-list">
+                <div><dt>Current Plan</dt><dd id="pfPlanName">Free Plan</dd></div>
+                <div><dt>Plan Expiry</dt><dd id="pfPlanExpiry">Expires: N/A</dd></div>
+              </dl>
+              <button class="btn btn-outline" id="pfUpgradeBtn" type="button">Upgrade Plan</button>
+            </div>
+            <div class="card">
+              <h3 class="block-title">Usage</h3>
+              <dl class="detail-list">
+                <div><dt>Total Keys Generated</dt><dd id="pfKeys">0</dd></div>
+                <div><dt>Active Bindings</dt><dd id="pfActiveBindings">0</dd></div>
+                <div><dt>Expired Bindings</dt><dd id="pfExpiredBindings">0</dd></div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings -->
+        <section class="app-page" id="page-settings">
+          <div class="dash-cols">
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Change Password</h3>
+                <form id="pwForm" novalidate>
+                  <div class="field"><label for="pwCurrent">Current password</label><input id="pwCurrent" type="password" autocomplete="current-password" placeholder="Enter current password"></div>
+                  <div class="field"><label for="pwNew">New password</label><input id="pwNew" type="password" autocomplete="new-password" placeholder="At least 8 characters with a letter and a number"></div>
+                  <p class="form-error" id="pwMessage" role="alert"></p>
+                  <button class="btn btn-primary" type="submit">Update Password</button>
+                </form>
+              </div>
+            </div>
+            <div class="dash-col">
+              <div class="card">
+                <h3 class="block-title">Session</h3>
+                <p class="muted-line">You are signed in as <b id="settingsUser">user</b>. Logging out ends your session on this server immediately.</p>
+                <button class="btn btn-outline" id="settingsLogout" type="button">Logout</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Plans -->
+        <section class="app-page" id="page-plans">
+          <div class="card plan-current" id="planCurrentBanner">
+            <div><h3 class="block-title">Current Plan: <span class="red" id="planCurrentName">Free</span></h3><p class="muted-line" id="planCurrentDesc">You do not have an active plan yet.</p></div>
+          </div>
+          <div class="plans-grid" id="plansGrid"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============ ADMIN ============ -->
+    <section class="view app-shell" id="view-admin">
+      <aside class="sidebar" id="adminSidebar">
+        <a class="sidebar-brand" href="#/admin">
+          <img src="assets/logo.png" alt="" class="brand-logo">
+          <span class="brand-name">PRIME <b>AVAY</b></span>
+        </a>
+        <nav class="side-nav" aria-label="Admin">
+          <span class="side-label">Admin</span>
+          <a href="#/admin" data-adminnav="overview"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>Overview</a>
+          <a href="#/admin/users" data-adminnav="users"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Users</a>
+          <a href="#/admin/keys" data-adminnav="keys"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.8"/><path d="m11 12 9-9m-3.5 3.5 2 2M15 7l2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Keys</a>
+          <a href="#/admin/deposits" data-adminnav="deposits"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M16 15h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Deposits</a>
+          <a href="#/admin/transactions" data-adminnav="transactions"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h11m0 0-3-3m3 3-3 3M17 17H6m0 0 3 3m-3-3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Transactions</a>
+          <a href="#/admin/plans" data-adminnav="plans"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 2 8l10 6 10-6-10-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m6 10.5-4 2.5 10 6 10-6-4-2.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Plans</a>
+        </nav>
+        <nav class="side-nav side-bottom" aria-label="Account">
+          <a href="#/app" ><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>User Portal</a>
+          <button class="side-link" id="adminLogout" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Logout</button>
+        </nav>
+        <div class="side-user">
+          <span class="avatar admin-avatar" id="adminSideAvatar">A</span>
+          <div class="side-user-meta"><b id="adminSideUsername">Admin</b><small>Administrator</small></div>
+        </div>
+      </aside>
+
+      <div class="app-main">
+        <div class="app-topbar">
+          <button class="nav-toggle app-nav-toggle" id="adminNavToggle" aria-label="Toggle navigation" type="button"><span></span><span></span><span></span></button>
+          <h2 id="adminTitle">Admin Dashboard</h2>
+          <div class="user-chip"><span class="avatar admin-avatar" id="adminAvatar">A</span><div><b id="adminUserName">Admin</b><small>Administrator</small></div></div>
+        </div>
+
+        <section class="app-page" id="apage-overview">
+          <p class="page-welcome">Manage users, keys, balance and more.</p>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Total Users</span><strong id="ovUsers">0</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="1.8"/><path d="m11 12 9-9m-3.5 3.5 2 2M15 7l2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Total Keys</span><strong id="ovKeys">0</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M16 15h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><span>Today's Deposits</span><strong id="ovDeposits">₹0.00</strong></div></article>
+            <article class="stat-card"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span>Total Spending</span><strong id="ovSpend">₹0.00</strong></div></article>
+          </div>
+          <div class="card">
+            <h3 class="block-title">Recent Users</h3>
+            <div class="table-wrap"><table class="table"><thead><tr><th>User</th><th>Balance</th><th>Plan</th><th>Joined</th></tr></thead><tbody id="recentUsersBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="app-page" id="apage-users">
+          <div class="card"><h3 class="block-title">Users</h3>
+            <div class="table-wrap"><table class="table"><thead><tr><th>User</th><th>Email</th><th>Role</th><th>Balance</th><th>Plan</th><th>Joined</th></tr></thead><tbody id="adminUsersBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="app-page" id="apage-keys">
+          <div class="card"><h3 class="block-title">Keys</h3>
+            <div class="table-wrap"><table class="table"><thead><tr><th>Key</th><th>User</th><th>Plan</th><th>Created</th><th>Status</th></tr></thead><tbody id="adminKeysBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="app-page" id="apage-deposits">
+          <div class="card"><h3 class="block-title">Deposits</h3>
+            <div class="table-wrap"><table class="table"><thead><tr><th>User</th><th>Amount</th><th>Reference</th><th>Date</th></tr></thead><tbody id="adminDepositsBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="app-page" id="apage-transactions">
+          <div class="card"><h3 class="block-title">Transactions</h3>
+            <div class="table-wrap"><table class="table"><thead><tr><th>User</th><th>Type</th><th>Amount</th><th>Reference</th><th>Date</th></tr></thead><tbody id="adminTxBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="app-page" id="apage-plans">
+          <div class="card"><h3 class="block-title">Plans</h3><p class="muted-line">Live plan configuration and current subscriber counts.</p></div>
+          <div class="plans-grid" id="adminPlansGrid"></div>
+          <p class="muted-line" id="adminNoPlan"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (public pages) ============ -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="" class="brand-logo">
+      <span class="brand-name">PRIME <b>AVAY</b></span>
+    </div>
+    <p class="footer-tag">The Standards. Clearly Defined.</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#/privacy">Privacy Policy</a><span>·</span><a href="#/terms">Terms of Service</a><span>·</span><a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2026 Prime Avay. All rights reserved. Independent service — not affiliated with Garena.</p>
+  </footer>
+
+  <!-- ============ MODALS ============ -->
+  <div class="modal-backdrop hidden" id="modalPlan" role="dialog" aria-modal="true" aria-labelledby="modalPlanTitle">
+    <div class="modal-card card">
+      <button class="modal-close" data-close="modalPlan" aria-label="Close" type="button">&times;</button>
+      <span class="eyebrow">Access Restricted</span>
+      <h2 id="modalPlanTitle">No Active Plan</h2>
+      <p class="modal-lead">Need to Buy Plan</p>
+      <p class="muted-line">Choose a plan to start generating keys. Plan limits and prices are enforced on the server.</p>
+      <div class="modal-plans" id="modalPlansList"></div>
+      <button class="btn btn-primary full" id="planModalView" type="button">View Plans</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBuyPlan" role="dialog" aria-modal="true" aria-labelledby="buyPlanTitle">
+    <div class="modal-card card">
+      <button class="modal-close" data-close="modalBuyPlan" aria-label="Close" type="button">&times;</button>
+      <span class="eyebrow">Access Restricted</span>
+      <h2 id="buyPlanTitle">Need to Buy Plan</h2>
+      <p class="modal-lead">Invalid username or access key.</p>
+      <p class="muted-line">Only authorized accounts can log in. Pick a plan below and hit <b>Buy</b> — you'll be redirected to our official Telegram to activate your account.</p>
+      <div class="modal-plans">
+        <div class="modal-plan">
+          <div><b>Premium Plan</b><small>₹999 · 25 keys/day · ₹300 per key</small></div>
+          <button class="btn btn-primary btn-sm" data-tg-buy type="button">Buy</button>
+        </div>
+        <div class="modal-plan">
+          <div><b>Ultimate Plan</b><small>₹1,999 · 50 keys/day · ₹300 per key</small></div>
+          <button class="btn btn-primary btn-sm" data-tg-buy type="button">Buy</button>
+        </div>
+      </div>
+      <button class="btn btn-outline full" data-tg-buy type="button">Buy on Telegram — @prime_avay</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalForgot" role="dialog" aria-modal="true">
+    <div class="modal-card card">
+      <button class="modal-close" data-close="modalForgot" aria-label="Close" type="button">&times;</button>
+      <span class="eyebrow">Account Recovery</span>
+      <h2>Reset Password</h2>
+      <p class="muted-line">Password reset via email is handled manually for your security. Contact support and we will verify your identity and reset your password.</p>
+      <a class="btn btn-outline full" href="#contact" data-close-href="modalForgot">Contact Support</a>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalDeposit" role="dialog" aria-modal="true" aria-labelledby="depTitle">
+    <div class="modal-card card">
+      <button class="modal-close" data-close="modalDeposit" aria-label="Close" type="button">&times;</button>
+      <div id="depStepPay">
+        <span class="eyebrow">Add Balance · Step 2 of 3 · Pay</span>
+        <h2 id="depTitle">Complete Payment</h2>
+        <p class="muted-line">Scan the QR with any UPI app — GPay, PhonePe, Paytm — to pay <b class="red" id="depAmountInline">₹100</b>.</p>
+        <div class="qr-wrap">
+          <canvas id="depQr" width="220" height="220" aria-label="UPI payment QR code"></canvas>
+          <span class="qr-badge">UPI · primeavay@upi</span>
+        </div>
+        <div class="dep-meta">
+          <div><span>Amount</span><b id="depAmountLabel">₹100</b></div>
+          <div><span>Time Left</span><b class="dep-timer" id="depTimer">00:10</b></div>
+        </div>
+        <p class="form-message center" id="depStatus">Waiting for payment…</p>
+        <button class="btn btn-outline full" id="depCancel" type="button">Cancel Payment</button>
+      </div>
+      <div id="depStepSuccess" class="hidden">
+        <div class="success-check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="m8 12.5 2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2 class="success-title">Payment Successful!</h2>
+        <p class="muted-line">Your payment has been completed and the amount has been added to your wallet balance.</p>
+        <div class="dep-meta">
+          <div><span>Deposited Amount</span><b id="depSuccessAmount">₹100</b></div>
+          <div><span>Added to Balance</span><b id="depSuccessAdded">₹100</b></div>
+        </div>
+        <button class="btn btn-success full" id="depBackDash" type="button">Back to Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js?v=6"></script>
+</body>
+</html>

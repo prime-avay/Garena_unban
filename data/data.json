@@ -1,0 +1,547 @@
+{
+  "users": [
+    {
+      "id": "usr_a64f0af724ee455e",
+      "username": "primeavay",
+      "email": "admin@primeavay.local",
+      "salt": "748380239e55ed0f6321e5ad14616613",
+      "hash": "db4806bdffdcef262c3b3087572a45f288868750267e6011ed338bee4878283399d7fda9bfbec45834b0adac67658deca12cb8c267083f1561a24bb1031f3087",
+      "role": "client",
+      "balance": 5802,
+      "plan": "Ultimate",
+      "planExpires": "2026-11-12T09:37:10.803Z",
+      "createdAt": "2026-10-13T05:05:51.564Z"
+    },
+    {
+      "id": "usr_f841924a8fe472ce",
+      "username": "HUYFWE",
+      "email": "FHWJEKFHE@GMAIL.COM",
+      "salt": "158b7ce42191dc94916eef5a091fde42",
+      "hash": "06c14fe999b11deb172af4c2dc7cea83c120677285de153ef1eec0309ed5b0c4a2f1a36ea158cd010bd3ba2d281c2bf2035e159efc7a84686018356ca52fb11b",
+      "role": "user",
+      "balance": 1,
+      "plan": "Premium",
+      "planExpires": "2026-11-12T05:19:11.477Z",
+      "createdAt": "2026-10-13T05:09:14.799Z"
+    },
+    {
+      "id": "usr_5ac0436b7b014922",
+      "username": "avay",
+      "email": "admin@primeavay.local",
+      "salt": "288cb0762f34058ee3f7c7e03e3f7082",
+      "hash": "daa2dd39d621e721cf21a6ad0373485d9911cff9c94dafc36c7f344e90c7456dd69cd92e1a7e0d82b2b3423d59b28ea7de68179ee39f1163a257f0dc3a065d74",
+      "role": "admin",
+      "balance": 500,
+      "plan": "Ultimate",
+      "planExpires": "2026-11-12T09:35:09.297Z",
+      "createdAt": "2026-10-13T09:35:09.298Z"
+    }
+  ],
+  "keys": [
+    {
+      "id": "key_fd49ae1170e1b289",
+      "key": "PRIME-UCBNU",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:47:34.982Z",
+      "bound": true
+    },
+    {
+      "id": "key_7e0fd860c729019e",
+      "key": "PRIME-YHRCX",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:47:32.971Z",
+      "bound": false
+    },
+    {
+      "id": "key_0906ff63fdd4711b",
+      "key": "PRIME-UEWFG",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:47:22.716Z",
+      "bound": false
+    },
+    {
+      "id": "key_abb14ba7303eb1fe",
+      "key": "PRIME-7A4LR",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:45:09.041Z",
+      "bound": false
+    },
+    {
+      "id": "key_1804d5313c1cfc8d",
+      "key": "PRIME-UUUVQ",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:39:55.578Z",
+      "bound": false
+    },
+    {
+      "id": "key_f66223ddc38e659d",
+      "key": "PRIME-RHAPP",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:39:51.387Z",
+      "bound": false
+    },
+    {
+      "id": "key_3f7cfdda978af42f",
+      "key": "PRIME-TAEOW",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:39:16.393Z",
+      "bound": false
+    },
+    {
+      "id": "key_4537ce66cbd89e1d",
+      "key": "PRIME-78L2F",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T06:25:46.251Z",
+      "bound": false
+    },
+    {
+      "id": "key_7871f27e89133898",
+      "key": "PRIME-PU62C",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T05:57:25.803Z",
+      "bound": false
+    },
+    {
+      "id": "key_d15c7ee2cda2a88d",
+      "key": "PRIME-ASER4",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T05:57:25.420Z",
+      "bound": false
+    },
+    {
+      "id": "key_d2e7b2e6bcec3ca3",
+      "key": "PRIME-3UZ7Y",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T05:57:24.246Z",
+      "bound": false
+    },
+    {
+      "id": "key_2c5dfc4662c6e788",
+      "key": "PRIME-PSFNE",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T05:52:32.196Z",
+      "bound": true
+    },
+    {
+      "id": "key_ec2cb598ae7acd39",
+      "key": "PRIME-1ULT8",
+      "userId": "usr_a64f0af724ee455e",
+      "plan": "Ultimate",
+      "createdAt": "2026-10-13T05:50:42.406Z",
+      "bound": false
+    },
+    {
+      "id": "key_41ff78ce972192de",
+      "key": "PRIME-WB87N",
+      "userId": "usr_f841924a8fe472ce",
+      "plan": "Premium",
+      "createdAt": "2026-10-13T05:19:35.066Z",
+      "bound": false
+    },
+    {
+      "id": "key_be45ad01f3a7384e",
+      "key": "PRIME-973CQ",
+      "userId": "usr_f841924a8fe472ce",
+      "plan": "Premium",
+      "createdAt": "2026-10-13T05:19:34.731Z",
+      "bound": false
+    },
+    {
+      "id": "key_497bbd5fc8239683",
+      "key": "PRIME-RCWE2",
+      "userId": "usr_f841924a8fe472ce",
+      "plan": "Premium",
+      "createdAt": "2026-10-13T05:19:32.645Z",
+      "bound": false
+    }
+  ],
+  "bindings": [
+    {
+      "id": "bnd_bd5fce81b14d6bb6",
+      "key": "PRIME-UCBNU",
+      "keyId": "key_fd49ae1170e1b289",
+      "userId": "usr_a64f0af724ee455e",
+      "uid": "5547685",
+      "createdAt": "2026-10-13T06:52:56.067Z",
+      "expiresAt": "2026-10-20T06:52:56.067Z"
+    },
+    {
+      "id": "bnd_d918ab28b76e700c",
+      "key": "PRIME-PSFNE",
+      "keyId": "key_2c5dfc4662c6e788",
+      "userId": "usr_a64f0af724ee455e",
+      "uid": "1111111111",
+      "createdAt": "2026-10-13T05:52:50.616Z",
+      "expiresAt": "2026-10-20T05:52:50.616Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx_bc556fba22ea1f9b",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -1999,
+      "type": "Plan purchase",
+      "ref": "ULTIMATE_PLAN",
+      "demo": true,
+      "createdAt": "2026-10-13T09:37:10.804Z"
+    },
+    {
+      "id": "tx_b2403c9da3001ffa",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -999,
+      "type": "Plan purchase",
+      "ref": "PREMIUM_PLAN",
+      "demo": true,
+      "createdAt": "2026-10-13T09:37:07.354Z"
+    },
+    {
+      "id": "tx_fc8f59e3e3105e7b",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-9SB6G2",
+      "demo": true,
+      "createdAt": "2026-10-13T07:04:02.795Z"
+    },
+    {
+      "id": "tx_daa6b15d47fbfce4",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-BQ5OE8",
+      "demo": true,
+      "createdAt": "2026-10-13T07:03:26.400Z"
+    },
+    {
+      "id": "tx_c580a504f91c1685",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 200,
+      "type": "Deposit",
+      "ref": "PAY-A11WG4",
+      "demo": true,
+      "createdAt": "2026-10-13T07:01:55.188Z"
+    },
+    {
+      "id": "tx_692be7207e45f75c",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-J47GSK",
+      "demo": true,
+      "createdAt": "2026-10-13T06:59:49.400Z"
+    },
+    {
+      "id": "tx_68a91ab1478a756b",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-UCBNU",
+      "demo": false,
+      "createdAt": "2026-10-13T06:47:34.982Z"
+    },
+    {
+      "id": "tx_f878fe210d563c59",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-YHRCX",
+      "demo": false,
+      "createdAt": "2026-10-13T06:47:32.971Z"
+    },
+    {
+      "id": "tx_f763a61e2c61ad04",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-UEWFG",
+      "demo": false,
+      "createdAt": "2026-10-13T06:47:22.716Z"
+    },
+    {
+      "id": "tx_92c67bec01a8eba2",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-7A4LR",
+      "demo": false,
+      "createdAt": "2026-10-13T06:45:09.041Z"
+    },
+    {
+      "id": "tx_4f6e7310d9ebf8c6",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-UUUVQ",
+      "demo": false,
+      "createdAt": "2026-10-13T06:39:55.578Z"
+    },
+    {
+      "id": "tx_20ff4f679e06ac1b",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-RHAPP",
+      "demo": false,
+      "createdAt": "2026-10-13T06:39:51.387Z"
+    },
+    {
+      "id": "tx_36582104106146a2",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 10000,
+      "type": "Deposit",
+      "ref": "PAY-ZD79II",
+      "demo": true,
+      "createdAt": "2026-10-13T06:39:48.324Z"
+    },
+    {
+      "id": "tx_60833b86f6e3790a",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-TAEOW",
+      "demo": false,
+      "createdAt": "2026-10-13T06:39:16.393Z"
+    },
+    {
+      "id": "tx_3edf7988c4e9e648",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-6ZM9RS",
+      "demo": true,
+      "createdAt": "2026-10-13T06:38:52.402Z"
+    },
+    {
+      "id": "tx_5f8876a79c874c79",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-78L2F",
+      "demo": false,
+      "createdAt": "2026-10-13T06:25:46.251Z"
+    },
+    {
+      "id": "tx_675c6e4da8b8a3ed",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-UZYBI5",
+      "demo": true,
+      "createdAt": "2026-10-13T06:06:18.328Z"
+    },
+    {
+      "id": "tx_82ae76f2939dd4a4",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-ATT23U",
+      "demo": true,
+      "createdAt": "2026-10-13T06:05:31.920Z"
+    },
+    {
+      "id": "tx_d0e63d24e87366c0",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 150,
+      "type": "Deposit",
+      "ref": "PAY-Z6LKVE",
+      "demo": true,
+      "createdAt": "2026-10-13T06:02:21.403Z"
+    },
+    {
+      "id": "tx_21fba2aa4b8c0ca7",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 150,
+      "type": "Deposit",
+      "ref": "PAY-53WTYI",
+      "demo": true,
+      "createdAt": "2026-10-13T06:01:17.653Z"
+    },
+    {
+      "id": "tx_fcd0d29678874c1d",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-PU62C",
+      "demo": false,
+      "createdAt": "2026-10-13T05:57:25.803Z"
+    },
+    {
+      "id": "tx_7d2c073517d6110a",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-ASER4",
+      "demo": false,
+      "createdAt": "2026-10-13T05:57:25.420Z"
+    },
+    {
+      "id": "tx_c54a6210ed511554",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-3UZ7Y",
+      "demo": false,
+      "createdAt": "2026-10-13T05:57:24.246Z"
+    },
+    {
+      "id": "tx_5b1abcf758dca1ec",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 100,
+      "type": "Deposit",
+      "ref": "PAY-7PCUIG",
+      "demo": true,
+      "createdAt": "2026-10-13T05:53:53.955Z"
+    },
+    {
+      "id": "tx_71b8c34d11378b9c",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-PSFNE",
+      "demo": false,
+      "createdAt": "2026-10-13T05:52:32.196Z"
+    },
+    {
+      "id": "tx_465b0e6ea0877bbc",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": 1000,
+      "type": "Deposit",
+      "ref": "PAY-EMB4CF",
+      "demo": true,
+      "createdAt": "2026-10-13T05:50:54.276Z"
+    },
+    {
+      "id": "tx_2e87dc0be1c8ec02",
+      "userId": "usr_a64f0af724ee455e",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-1ULT8",
+      "demo": false,
+      "createdAt": "2026-10-13T05:50:42.406Z"
+    },
+    {
+      "id": "tx_006f3351f44ec3fc",
+      "userId": "usr_f841924a8fe472ce",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-WB87N",
+      "demo": false,
+      "createdAt": "2026-10-13T05:19:35.066Z"
+    },
+    {
+      "id": "tx_2a75d705e1ead259",
+      "userId": "usr_f841924a8fe472ce",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-973CQ",
+      "demo": false,
+      "createdAt": "2026-10-13T05:19:34.731Z"
+    },
+    {
+      "id": "tx_3551f103d520ac46",
+      "userId": "usr_f841924a8fe472ce",
+      "amount": -300,
+      "type": "Key generation",
+      "ref": "PRIME-RCWE2",
+      "demo": false,
+      "createdAt": "2026-10-13T05:19:32.645Z"
+    },
+    {
+      "id": "tx_af5e4f97d5f6529a",
+      "userId": "usr_f841924a8fe472ce",
+      "amount": -999,
+      "type": "Plan purchase",
+      "ref": "PREMIUM_PLAN",
+      "demo": true,
+      "createdAt": "2026-10-13T05:19:11.477Z"
+    },
+    {
+      "id": "tx_bddb13d54cfea51f",
+      "userId": "usr_f841924a8fe472ce",
+      "amount": 1000,
+      "type": "Deposit",
+      "ref": "PAY-IASAEA",
+      "demo": true,
+      "createdAt": "2026-10-13T05:19:05.241Z"
+    },
+    {
+      "id": "tx_010e822a83f7a806",
+      "userId": "usr_f841924a8fe472ce",
+      "amount": 900,
+      "type": "Deposit",
+      "ref": "PAY-PECXR5",
+      "demo": true,
+      "createdAt": "2026-10-13T05:18:54.600Z"
+    }
+  ],
+  "sessions": {
+    "0ebf98299f86a36d6bcbd9216517f6272c94547892736ab23f86fe7d03bdc9ff": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1791911169341
+    },
+    "666427d763081bfd469fcbca166d2424a00977f883ed55eebce7239571176ca6": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1791912503589
+    },
+    "585ff30a587bd16775afb92d3e14f8b99aef27491d217afec6c544645db89fb2": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794461609504
+    },
+    "8c40030f9759196c2a924c96497ba3c41fe17634a28d8b1f510c8cd5bd6e9ad5": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1791913145310
+    },
+    "6f5831fe67b5cb4e37ddacb5770e4732b98602a4d39a0904d705f12308aaa75e": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1791913160662
+    },
+    "865cc095f652e3702cf0dde2973b06c2d261ee15c4717fdaaae6a0c923bbe947": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794462032425
+    },
+    "5eb840684dcc84adcd92ac7c918679c0f0ec288774cb6b23160c537be37e5e46": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794462069459
+    },
+    "0e8ce0856a2b73335b8802df13fd3de1ddebb17119f750f22ace9c3f5c566d72": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794462144726
+    },
+    "59acfdedc72eb90caab7861a2d552a7c1132b03b4517b1fe032341fc85f26d49": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794462617448
+    },
+    "ffd8c5d3c65229a01c74250a871dfd0cdbe9800cc2f41a69cc00d9f61fad26d2": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794463167164
+    },
+    "55c8cdbcbd9b3725abce2cdda699d64410feef7e811f7c5ade5efd2a8a0bd671": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1791914477579
+    },
+    "8f872ba90a0fd2cad7e35068459341c39e23e93893ab66abe34670e5b6222af2": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794463319289
+    },
+    "c328a4c0cc1a8f18b3e393008c0c114a647803d26026aed1f293d99ca64a7b8b": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794467074152
+    },
+    "6df3b254f15f772bd531bbbd973b9382f711de2a4e24ca41e6c0ca3440898e43": {
+      "userId": "usr_a64f0af724ee455e",
+      "expiresAt": 1794476212065
+    }
+  }
+}
